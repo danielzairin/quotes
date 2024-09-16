@@ -1,8 +1,12 @@
 {
   "extends": "@tsconfig/node20/tsconfig.json",
   "compilerOptions": {
+    "strict": true,
     "allowJs": true,
     "checkJs": true,
-    "noEmit": true
-  }
+    "outDir": "bin",
+    "module": "nodenext",
+    "moduleResolution": "nodenext"
+  },
+  "exclude": ["node_modules", "bin", "dist"]
 }

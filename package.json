@@ -1,7 +1,10 @@
 {
+  "name": "quotes",
   "scripts": {
-    "start": "node index.mjs"
+    "start": "node index.mjs",
+    "build": "tsc"
   },
+  "bin": "bin/index.mjs",
   "devDependencies": {
     "@tsconfig/node20": "^20.1.4",
     "@types/node": "^22.5.4",
