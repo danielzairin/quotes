@@ -4,6 +4,8 @@ import os from "node:os";
 
 /** @typedef {import("./types.ts").Quote} Quote */
 
+const displayProbability = Number(process.argv[2] || "0.05"); // 5% chance by default
+
 const PATH_TO_QUOTES = os.homedir() + "/quotes.json";
 
 const rawQuotes = fs.readFileSync(PATH_TO_QUOTES);
@@ -18,4 +20,6 @@ export function getRandomQuote() {
   return quotes[Math.floor(Math.random() * quotes.length)];
 }
 
-console.log(getRandomQuote());
+if (displayProbability > Math.random()) {
+  console.log(getRandomQuote());
+}
