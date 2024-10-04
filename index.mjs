@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 import fs from "node:fs";
+import os from "node:os";
 
 /** @typedef {import("./types.ts").Quote} Quote */
 
-const PATH_TO_QUOTES = "quotes.json";
+const PATH_TO_QUOTES = os.homedir() + "/quotes.json";
 
 const rawQuotes = fs.readFileSync(PATH_TO_QUOTES);
 
@@ -13,7 +14,7 @@ const quotes = JSON.parse(rawQuotes.toString());
 /**
  * @returns {Quote} A random quote
  */
-function getRandomQuote() {
+export function getRandomQuote() {
   return quotes[Math.floor(Math.random() * quotes.length)];
 }
 
