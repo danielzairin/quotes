@@ -17,15 +17,12 @@ func getHomeDirOrPanic() string {
 }
 
 var quotesAppDir = path.Join(getHomeDirOrPanic(), ".quotes")
-var annotationsDir = path.Join(getHomeDirOrPanic(), "annotations")
 var loadedFile = path.Join(quotesAppDir, "loaded.ndjson")
 
 var rootCmd = &cobra.Command{
-	Use:   "quotes",
-	Short: "Quotes from kobo",
-	Run: func(cmd *cobra.Command, args []string) {
-		// Do Stuff Here
-		fmt.Println("i am root")
+	Use: "quotes",
+	CompletionOptions: cobra.CompletionOptions{
+		HiddenDefaultCmd: true,
 	},
 }
 

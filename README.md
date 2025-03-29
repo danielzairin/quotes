@@ -14,10 +14,10 @@ go install
 
 ### Usage
 
-Load kobo annotations folder from $HOME/annotations.
+Load kobo annotations folder.
 
 ```
-quotes load
+quotes load <path to annotations folder>
 ```
 
 Once loaded, you can get a random quote.

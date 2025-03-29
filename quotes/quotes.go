@@ -1,8 +1,11 @@
 package quotes
 
 import (
+	"bufio"
+	"encoding/json"
 	"encoding/xml"
 	"fmt"
+	"log"
 	"os"
 	"path"
 	"regexp"
@@ -129,4 +132,25 @@ func wrapText(text string, limit int) string {
 	}
 
 	return wrapped.String()
+}
+
+func GetLoadedQuotesFromFile(path string) ([]Quote, error) {
+	var quotes []Quote
+	file, err := os.Open(path)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer file.Close()
+	scanner := bufio.NewScanner(file)
+
+	for scanner.Scan() {
+		var quote Quote
+		err := json.Unmarshal(scanner.Bytes(), &quote)
+		if err != nil {
+			log.Fatal(err)
+		}
+		quotes = append(quotes, quote)
+	}
+
+	return quotes, nil
 }

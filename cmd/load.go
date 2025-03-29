@@ -15,10 +15,12 @@ func init() {
 }
 
 var loadCmd = &cobra.Command{
-	Use:   "load",
-	Short: "Loads a kobo annotations directory",
+	Use:     "load",
+	Short:   "Loads a kobo annotations directory",
+	Args:    cobra.ExactArgs(1),
+	Example: "quotes load ./Annotations",
 	Run: func(cmd *cobra.Command, args []string) {
-		quotes, err := quotes.LoadQuotes(annotationsDir)
+		quotes, err := quotes.LoadQuotes(args[0])
 		if err != nil {
 			log.Fatal(err)
 		}
